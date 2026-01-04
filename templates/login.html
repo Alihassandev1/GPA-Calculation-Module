@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - GPASystem</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body style="display: flex; align-items: center; justify-content: center; height: 100vh;">
+    <div class="container" style="max-width: 450px;">
+        <div style="text-align: center; margin-bottom: 2rem;">
+            <i class="fas fa-lock" style="font-size: 2rem; color: var(--primary);"></i>
+            <h2 style="margin-top: 1rem;">Login</h2>
+        </div>
+
+        <form action="{{ url_for('auth.login') }}" method="post">
+            <div class="form-group">
+                <label for="email"><i class="fas fa-envelope"></i> Email Address</label>
+                <input type="email" name="email" id="email" placeholder="e.g. name@example.com" required>
+            </div>
+            {% if email_msg %}
+            <div class="msg" style="color: var(--accent); margin-top: -10px; margin-bottom: 15px;">{{ email_msg }}</div>
+            {% endif %}
+
+            <div class="form-group">
+                <label for="password"><i class="fas fa-key"></i> Password</label>
+                <input type="password" name="password" id="password" placeholder="••••••••" required>
+            </div>
+            {% if pw_msg %}
+            <div class="msg" style="color: var(--accent); margin-top: -10px; margin-bottom: 15px;">{{ pw_msg }}</div>
+            {% endif %}
+
+            <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; padding: 1rem;">
+                Sign In
+            </button>
+
+            <div class="links" style="margin-top: 2rem; border-top: 1px solid #f0f0f0; padding-top: 1.5rem;">
+                <a href="{{ url_for('auth.signup') }}" style="font-weight: 600;">Create a new account</a>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
