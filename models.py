@@ -64,17 +64,3 @@ class Subject(db.Model):
             'created_at': self.created_at.strftime('%Y-%m-%d %H:%M:%S') 
             if self.created_at else None
         }
-
-# class CGPA(db.Model):
-#     id = db.Column(db.Integer, primary_key = True)
-#     cgpa = db.Column(db.Float())
-#     std_id = db.Column(db.Integer, db.ForeignKey('student.id'))
-#     created_at = db.Column(db.DateTime, default=db.func.now())
-#     def to_dict(self):
-#         return {
-#             'id': self.id,
-#             'cgpa': self.cgpa,
-#             'std_id': self.std_id,
-#             'created_at': self.created_at.strftime('%Y-%m-%d %H:%M:%S') 
-#             if self.created_at else None
-#         }
