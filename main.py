@@ -30,50 +30,6 @@ with app.app_context():
 def index():
     return render_template('index.html')
 
-# @app.route('/login', methods=['GET', 'POST'])
-# def login():
-#     if request.method == 'POST':
-#         email = request.form.get('email').lower()
-#         password = request.form.get('password')
-#         checkUser = Student.query.filter_by(email=email).first()
-#         if checkUser:
-#             if checkUser.password == password:
-#                 session['user_id'] = checkUser.id
-#                 return redirect(url_for('dashboard'))
-#             else:
-#                 pw_msg = 'Password is wrong!'
-#                 return render_template('login.html', pw_msg=pw_msg)
-#         else:
-#             email_msg = 'Email not registered'
-#             return render_template('login.html', email_msg=email_msg)
-#     return render_template('login.html')
-
-
-# @app.route('/signup', methods=['GET', 'POST'])
-# def signup():
-#     if request.method == 'POST':
-#         name = request.form.get('name')
-#         email = request.form.get('email').lower()
-#         password = request.form.get('password')
-#         if not password or not email:
-#             msg = 'Email-ID and password both are Required'
-#             return render_template('signup.html', msg=msg)
-#         checkUser = Student.query.filter_by(email=email).first()
-#         if checkUser:
-#             msg = 'this email is already register!'
-#             return render_template('signup.html', msg=msg)
-#         newUser = Student(email=email, password=password, name=name)
-#         db.session.add(newUser)
-#         db.session.commit()
-#         session['user_id'] = newUser.id 
-#         return redirect(url_for('dashboard'))
-#     return render_template('signup.html')
-
-# @app.route('/logout')
-# def logout():
-#     session.pop('user_id', None)
-#     return redirect(url_for('login'))
-
 @app.route('/calculator', methods=['GET', 'POST'])
 @login_required
 def calculator():
